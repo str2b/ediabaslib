@@ -38,6 +38,7 @@
     <Compile Remove="EdBluetoothInterface.cs" />
     <Compile Remove="EdFtdiInterface.cs" />
     <Compile Remove="MemoryStreamReader.cs" />
+    <Compile Remove="EdGsUsbInterface.cs" />
   </ItemGroup>
   <ItemGroup Condition="!$(TargetFramework.Contains('android'))">
     <Compile Remove="BtLeGattSppAndroid.cs" />

@@ -1514,6 +1514,34 @@ namespace EdiabasLib
                 InterfaceSendPulseFuncInt = null;
             }
 #endif
+#if !ANDROID
+            else if (ComPortProtected.ToUpper(Culture).StartsWith("GS_USB"))
+            {   // automatic hook of gs_usb functions
+                EdGsUsbInterface.Ediabas = Ediabas;
+                InterfaceConnectFuncInt = EdGsUsbInterface.InterfaceConnect;
+                InterfaceDisconnectFuncInt = EdGsUsbInterface.InterfaceDisconnect;
+                InterfaceTransmitCancelFuncInt = null;
+                InterfaceSetConfigFuncInt = EdGsUsbInterface.InterfaceSetConfig;
+                InterfaceSetDtrFuncInt = EdGsUsbInterface.InterfaceSetDtr;
+                InterfaceSetRtsFuncInt = EdGsUsbInterface.InterfaceSetRts;
+                InterfaceGetDsrFuncInt = EdGsUsbInterface.InterfaceGetDsr;
+                InterfaceSetBreakFuncInt = EdGsUsbInterface.InterfaceSetBreak;
+                InterfaceSetInterByteTimeFuncInt = null;
+                InterfaceSetCanIdsFuncInt = EdGsUsbInterface.InterfaceSetCanIds;
+                InterfacePurgeInBufferFuncInt = EdGsUsbInterface.InterfacePurgeInBuffer;
+                InterfaceAdapterEchoFuncInt = null;
+                InterfaceHasPreciseTimeoutFuncInt = null;
+                InterfaceHasAutoBaudRateFuncInt = null;
+                InterfaceHasAutoKwp1281FuncInt = null;
+                InterfaceAdapterVersionFuncInt = null;
+                InterfaceAdapterSerialFuncInt = null;
+                InterfaceAdapterVoltageFuncInt = null;
+                InterfaceHasIgnitionStatusFuncInt = null;
+                InterfaceSendDataFuncInt = EdGsUsbInterface.InterfaceSendData;
+                InterfaceReceiveDataFuncInt = EdGsUsbInterface.InterfaceReceiveData;
+                InterfaceSendPulseFuncInt = null;
+            }
+#endif
             else
             {
                 InterfaceConnectFuncInt = null;
